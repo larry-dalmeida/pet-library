@@ -1,8 +1,8 @@
-const { gql } = require('apollo-server');
+const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   scalar Date
-  
+
   type Photo {
     full: String!
     thumbnail: String!
@@ -49,7 +49,33 @@ const typeDefs = gql`
     good: Boolean
   }
 
+  type Rabbit implements Pet {
+    id: ID!
+    name: String!
+    weight: Float
+    status: PetStatus
+    photo: Photo
+    dueDate: Date
+    inCareOf: Customer
+    favoriteFood: String
+    floppy: Int
+  }
+
+  type Stingray implements Pet {
+    id: ID!
+    name: String!
+    weight: Float
+    status: PetStatus
+    photo: Photo
+    dueDate: Date
+    inCareOf: Customer
+    chill: Int
+    fast: Boolean
+  }
+
   union FamilyPet = Cat | Dog
+
+  union ExoticPet = Rabbit | Stingray
 
   type Query {
     allPets: [Pet!]!
@@ -58,6 +84,7 @@ const typeDefs = gql`
     allCheckedOutPets: [Pet!]!
     checkedOutPets: Int!
     familyPets: [FamilyPet!]!
+    exoticPets: [ExoticPet!]!
     petById(id: ID!): Pet
     totalPets: Int!
     allCustomers: [Customer!]!

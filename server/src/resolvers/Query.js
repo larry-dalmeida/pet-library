@@ -19,6 +19,7 @@ const Query = {
     },
     checkedOutPets: (_, __, { dataSources }) => dataSources.checkoutAPI.getTotalCheckouts(),
     familyPets: (_, __, { dataSources }) => dataSources.petAPI.getAllFamilyPets(),
+    exoticPets: (_, __, { dataSources }) => dataSources.petAPI.getAllExoticPets(),
     petById: (_, { id }, { dataSources }) => dataSources.petAPI.getPetById(id),
     totalPets: (_, __, { dataSources }) => dataSources.petAPI.getTotalPets(),
     allCustomers: (_, __, { dataSources }) => dataSources.customerAPI.getAllCustomers(),
